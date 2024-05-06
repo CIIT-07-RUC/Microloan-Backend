@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{31A05D1A-9042-4B8E-9CDF-41D063E11F95}|http">
+  <MonoDevelop.Ide.ItemProperties.MicroLoanAPI PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DataService/DataService.csproj">
+    <Files>
+      <File FileName="MicroLoanAPI/Controllers/WeatherForecastController.cs" Line="21" Column="32" />
+      <File FileName="DataService/DataService.cs" Line="12" Column="1" />
+      <File FileName="DataService/DataService.csproj" Line="14" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Option id="ShowAllFiles" value="True" />
+          <Node name="MicroLoanAPI" expanded="True">
+            <Node name="DataService">
+              <Node name="Dependencies" expanded="True">
+                <Node name="FrameworkReferences" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="MicroLoanAPI" expanded="True">
+              <Node name="Controllers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>
