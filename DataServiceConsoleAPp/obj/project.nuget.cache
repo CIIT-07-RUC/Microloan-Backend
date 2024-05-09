@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "KTizGnN/vgACJIK9+HEyivb0I8AIDtFZGAYk8sdoNPoXMROBVv8ZUGMfnEg/Z11Vy8yUgKPC99DVjVv5G6bOKQ==",
+  "dgSpecHash": "yO9UE13MRQo7/bAzndlyICfTnC7xQrV/sAEw+iwD2gQPK42jgKv7SxLpJ9ueeMKJhgQvhB3xmZo4Mo+ISHbn0A==",
   "success": true,
   "projectFilePath": "/Users/matuskalanin/Projects/MicroLoanAPI/DataServiceConsoleAPp/DataServiceConsoleAPp.csproj",
   "expectedPackageFiles": [
+    "/Users/matuskalanin/.nuget/packages/bcrypt.net-next/4.0.3/bcrypt.net-next.4.0.3.nupkg.sha512",
     "/Users/matuskalanin/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/Users/matuskalanin/.nuget/packages/microsoft.entityframeworkcore/6.0.0/microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
     "/Users/matuskalanin/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.0/microsoft.entityframeworkcore.abstractions.6.0.0.nupkg.sha512",

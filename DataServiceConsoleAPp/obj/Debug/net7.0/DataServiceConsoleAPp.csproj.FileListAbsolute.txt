@@ -42,3 +42,4 @@
 /Users/matuskalanin/Projects/MicroLoanAPI/DataServiceConsoleAPp/obj/Debug/net7.0/DataServiceConsoleAPp.pdb
 /Users/matuskalanin/Projects/MicroLoanAPI/DataServiceConsoleAPp/obj/Debug/net7.0/DataServiceConsoleAPp.genruntimeconfig.cache
 /Users/matuskalanin/Projects/MicroLoanAPI/DataServiceConsoleAPp/obj/Debug/net7.0/ref/DataServiceConsoleAPp.dll
+/Users/matuskalanin/Projects/MicroLoanAPI/DataServiceConsoleAPp/bin/Debug/net7.0/BCrypt.Net-Next.dll
