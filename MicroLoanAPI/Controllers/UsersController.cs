@@ -1,5 +1,7 @@
 ﻿using System;
 using DataService;
+using Idfy;
+using Idfy.IdentificationV2;
 using MicroLoanAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,18 +12,20 @@ namespace MicroLoanAPI.Controllers
     public class UsersController : ControllerBase
 	{
         private readonly IDataService _dataservice;
+        private readonly IIdentificationV2Service _identificationV2Service;
 
         public UsersController(IDataService dataService)
 		{
             
             _dataservice = dataService;
+            _identificationV2Service = new IdentificationV2Service("sandbox-stunning-bag-347", "vMsNWEBnGHDlxVmt4XRrF1RYWdcfKNnCnFNxWXJ7GOSn6obs", new List<OAuthScope> { OAuthScope.Identify});
         }
 
         [HttpPost]
         public IActionResult SignIn(RegisterUserModel model)
         {
-            Console.WriteLine("model", model);
-            var registerUser = _dataservice.RegisterUser(model.EmailAdress, model.PhoneNumber, model.Password, model.ConfirmPassword);
+    
+            var registerUser = _dataservice.RegisterUser(model.EmailAdress, model.PhoneNumber, model.Password, model.ConfirmPassword, model.IsInvestor);
 
             bool isRegistrationSuccessful = registerUser.Item1;
             string responseMessage = registerUser.Item2;
@@ -34,12 +38,96 @@ namespace MicroLoanAPI.Controllers
             return Ok(new { isRegistrationSuccessful = isRegistrationSuccessful, responseMessage = responseMessage });
         }
 
+        [HttpPost("login")]
+        public IActionResult Login(LoginUserModel model)
+        {
+            var loginUser = _dataservice.LoginUser(model.EmailAdress, model.Password);
+
+            bool isLoginSuccessful = loginUser.Item1;
+            string responseMessage = loginUser.Item2;
+
+            if (isLoginSuccessful == false)
+            {
+                return BadRequest(new { isRegistrationSuccessful = isLoginSuccessful, responseMessage = responseMessage });
+            }
+
+            return Ok(new { isRegistrationSuccessful = isLoginSuccessful, responseMessage = responseMessage });
+        }
+
         [HttpGet]
         public IActionResult GetUserByMail([FromQuery] string email)
         {
             var user = _dataservice.GetUserByMail(email);
             return Ok(user);
         }
+
+
+        [HttpPost("create-mit-id-session")]
+        public async Task<IActionResult> CreateMitIdSession()
+        {
+            var frontendDomain = "http://localhost:3000/";
+            var backendDomain = "http://localhost:5205/";
+
+            try
+            {
+                var session = await _identificationV2Service.CreateSessionAsync(new IdSessionCreateOptions()
+                {
+                    Flow = IdSessionFlow.Redirect,
+                    RedirectSettings = new RedirectSettings()
+                    {
+                        ErrorUrl = frontendDomain + "?error=true",
+                        AbortUrl = frontendDomain + "?canceled=true",
+                        SuccessUrl = backendDomain + "authentication-session"
+                    },
+                    AllowedProviders = new List<IdProviderType>
+                {
+                    IdProviderType.Mitid
+                },
+                    Include = new List<Include>()
+                {
+                    Include.Name,
+                    Include.Nin
+                }
+                });
+
+                // Return the URL to the client
+                return Ok(new { url = session.Url });
+            }
+            catch (IdfyException ex)
+            {
+                // Log detailed error information
+                Console.WriteLine($"IdfyException: {ex.Message}");
+                Console.WriteLine($"StackTrace: {ex.StackTrace}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"InnerException: {ex.InnerException.Message}");
+                    Console.WriteLine($"InnerException StackTrace: {ex.InnerException.StackTrace}");
+                }
+                else
+                {
+                    Console.WriteLine("InnerException is null.");
+                }
+
+                // Return a meaningful error message to the client
+                return StatusCode(500, $"Internal server error occurred while creating MitID session. Exception Message: {ex.Message}, StackTrace: {ex.StackTrace}");
+            }
+        }
+
+        [HttpGet("get-mit-id-session")]
+        public async Task<IActionResult> RetrieveMitId([FromQuery(Name = "sessionId")] string sessionId)
+        {
+            var frontendDomain = "http://localhost:3000/";
+            var result = await _identificationV2Service.GetSessionAsync(sessionId);
+            string name = result.Identity.FullName;
+            string nin = result.Identity.Nin;
+
+            Response.Headers.Add("Location", frontendDomain + "?success=true&name=" + name + "%nin=" + nin);
+            return new StatusCodeResult(303);
+
+        }
+
+
+
     }
 }
 

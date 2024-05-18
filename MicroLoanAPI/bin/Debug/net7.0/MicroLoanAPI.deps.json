@@ -9,6 +9,7 @@
       "MicroLoanAPI/1.0.0": {
         "dependencies": {
           "DataService": "1.0.0",
+          "Idfy.SDK": "2.13.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.11",
           "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.6",
           "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.1.6",
@@ -565,6 +566,17 @@
         "resources": {
           "lib/net6.0/zh-Hant/Humanizer.resources.dll": {
             "locale": "zh-Hant"
+          }
+        }
+      },
+      "Idfy.SDK/2.13.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Idfy.SDK.dll": {
+            "assemblyVersion": "2.13.0.0",
+            "fileVersion": "2.13.0.0"
           }
         }
       },
@@ -2902,6 +2914,13 @@
       "sha512": "sha512-VIXB7HCUC34OoaGnO3HJVtSv2/wljPhjV7eKH4+TFPgQdJj2lvHNKY41Dtg0Bphu7X5UaXFR4zrYYyo+GNOjbA==",
       "path": "humanizer.core.zh-hant/2.14.1",
       "hashPath": "humanizer.core.zh-hant.2.14.1.nupkg.sha512"
+    },
+    "Idfy.SDK/2.13.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-wUI8Q+QNkCzvAbH/N4uk3gDLM3ZwJdtSZLJAtoh7DNV7OqK8s8ToMIvR7uflLynqeBsenTqANk22RZoz/p0qIQ==",
+      "path": "idfy.sdk/2.13.0",
+      "hashPath": "idfy.sdk.2.13.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/7.0.11": {
       "type": "package",

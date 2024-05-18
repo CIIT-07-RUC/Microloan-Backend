@@ -609,6 +609,22 @@
           }
         }
       },
+      "Idfy.SDK/2.13.0": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Idfy.SDK.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Idfy.SDK.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.OpenApi/7.0.11": {
         "type": "package",
         "dependencies": {
@@ -4669,6 +4685,19 @@
         "lib/netstandard1.0/zh-Hant/Humanizer.resources.dll",
         "lib/netstandard2.0/zh-Hant/Humanizer.resources.dll",
         "logo.png"
+      ]
+    },
+    "Idfy.SDK/2.13.0": {
+      "sha512": "wUI8Q+QNkCzvAbH/N4uk3gDLM3ZwJdtSZLJAtoh7DNV7OqK8s8ToMIvR7uflLynqeBsenTqANk22RZoz/p0qIQ==",
+      "type": "package",
+      "path": "idfy.sdk/2.13.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "idfy.sdk.2.13.0.nupkg.sha512",
+        "idfy.sdk.nuspec",
+        "lib/netstandard2.0/Idfy.SDK.dll",
+        "lib/netstandard2.0/Idfy.SDK.xml"
       ]
     },
     "Microsoft.AspNetCore.OpenApi/7.0.11": {
@@ -11380,6 +11409,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "DataService >= 1.0.0",
+      "Idfy.SDK >= 2.13.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.11",
       "Microsoft.EntityFrameworkCore.Relational.Design >= 1.1.6",
       "Microsoft.EntityFrameworkCore.Sqlite.Design >= 1.1.6",
@@ -11430,6 +11460,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "Idfy.SDK": {
+            "target": "Package",
+            "version": "[2.13.0, )"
+          },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[7.0.11, )"

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9plYduV6IMCWkc17m47EzBKhB9Yi3mDbziYmAO/KGIjRjFtjk24+x1Cs2Vz6TZVgumCx4co0H+k1feAhNHbGog==",
+  "dgSpecHash": "c6GLacz8QKCHcQp4mBbOyXTnAKR3jC2Hn4JW0IQ+iJ8mQYRmfS4ozv4Xs6B+uUiTPqdT42il638X3uFtfA1DRA==",
   "success": true,
   "projectFilePath": "/Users/matuskalanin/Projects/MicroLoanAPI/MicroLoanAPI/MicroLoanAPI.csproj",
   "expectedPackageFiles": [
@@ -55,6 +55,7 @@
     "/Users/matuskalanin/.nuget/packages/humanizer.core.zh-cn/2.14.1/humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "/Users/matuskalanin/.nuget/packages/humanizer.core.zh-hans/2.14.1/humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "/Users/matuskalanin/.nuget/packages/humanizer.core.zh-hant/2.14.1/humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "/Users/matuskalanin/.nuget/packages/idfy.sdk/2.13.0/idfy.sdk.2.13.0.nupkg.sha512",
     "/Users/matuskalanin/.nuget/packages/microsoft.aspnetcore.openapi/7.0.11/microsoft.aspnetcore.openapi.7.0.11.nupkg.sha512",
     "/Users/matuskalanin/.nuget/packages/microsoft.aspnetcore.razor.language/6.0.11/microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512",
     "/Users/matuskalanin/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

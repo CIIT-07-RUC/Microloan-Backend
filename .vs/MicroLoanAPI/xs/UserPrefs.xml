@@ -1,37 +1,29 @@
 ﻿<Properties StartupConfiguration="{31A05D1A-9042-4B8E-9CDF-41D063E11F95}|http">
-  <MonoDevelop.Ide.ItemProperties.MicroLoanAPI PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="DataService/DataService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DataService/IDataService.cs">
     <Files>
-      <File FileName="DataService/DataService.cs" Line="20" Column="1" />
-      <File FileName="DataService/DataService.csproj" Line="18" Column="1" />
-      <File FileName="DataService/Models/Borrower.cs" Line="9" Column="10" />
-      <File FileName="DataService/Models/AccountStatement.cs" Line="15" Column="1" />
-      <File FileName="DataService/Models/Investor.cs" Line="1" Column="1" />
-      <File FileName="DataService/Models/UserAccount.cs" Line="1" Column="1" />
-      <File FileName="DataService/Models/PaymentMethod.cs" Line="1" Column="1" />
-      <File FileName="DataService/Models/microloan_dbContext.cs" Line="8" Column="45" />
-      <File FileName="DataService/Models/BorrowerProposal.cs" Line="22" Column="1" />
-      <File FileName="DataService/Models/InvestorLoanConfirmation.cs" Line="1" Column="1" />
-      <File FileName="DataService/Models/LoanRepaymentSchedule.cs" Line="1" Column="1" />
-      <File FileName="DataService/Models/LoanTicket.cs" Line="1" Column="1" />
-      <File FileName="DataServiceConsoleAPp/Program.cs" Line="1" Column="1" />
+      <File FileName="DataService/DataService.csproj" />
+      <File FileName="DataService/Models/Borrower.cs" />
+      <File FileName="DataService/Models/AccountStatement.cs" />
+      <File FileName="DataService/Models/Investor.cs" />
+      <File FileName="DataService/Models/UserAccount.cs" />
+      <File FileName="DataService/Models/PaymentMethod.cs" />
+      <File FileName="DataService/Models/microloan_dbContext.cs" />
+      <File FileName="DataService/Models/BorrowerProposal.cs" />
+      <File FileName="DataService/Models/InvestorLoanConfirmation.cs" />
+      <File FileName="DataService/Models/LoanRepaymentSchedule.cs" />
+      <File FileName="DataService/Models/LoanTicket.cs" />
+      <File FileName="DataServiceConsoleAPp/Program.cs" />
+      <File FileName="DataService/DataServiceMain.cs" Line="40" Column="14" />
+      <File FileName="MicroLoanAPI/Controllers/UsersController.cs" />
+      <File FileName="DataService/IDataService.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Option id="ShowAllFiles" value="True" />
           <Node name="MicroLoanAPI" expanded="True">
-            <Node name="DataService">
-              <Node name="bin" expanded="True">
-                <Node name="Debug" expanded="True" />
-              </Node>
-              <Node name="Models" expanded="True" />
-              <Node name="DataService.cs" selected="True" />
+            <Node name="DataService" expanded="True">
+              <Node name="IDataService.cs" selected="True" />
             </Node>
             <Node name="MicroLoanAPI" expanded="True">
               <Node name="Controllers" expanded="True" />
@@ -42,4 +34,10 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.MicroLoanAPI PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
