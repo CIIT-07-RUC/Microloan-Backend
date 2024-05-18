@@ -1,0 +1,14 @@
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/bin/Debug/net7.0/DataService.deps.json
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/bin/Debug/net7.0/DataService.dll
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/bin/Debug/net7.0/DataService.pdb
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/DataService.csproj.AssemblyReference.cache
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/DataService.GeneratedMSBuildEditorConfig.editorconfig
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/DataService.AssemblyInfoInputs.cache
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/DataService.AssemblyInfo.cs
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/DataService.csproj.CoreCompileInputs.cache
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/DataService.dll
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/refint/DataService.dll
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/DataService.pdb
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/ref/DataService.dll
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/bin/Debug/net7.0/DataService.runtimeconfig.json
+/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/Debug/net7.0/DataService.genruntimeconfig.cache

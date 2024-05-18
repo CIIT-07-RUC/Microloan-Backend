@@ -1,0 +1,79 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/matuskalanin/Projects/MicroLoanAPI/DataService/DataService.csproj": {}
+  },
+  "projects": {
+    "/Users/matuskalanin/Projects/MicroLoanAPI/DataService/DataService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/matuskalanin/Projects/MicroLoanAPI/DataService/DataService.csproj",
+        "projectName": "DataService",
+        "projectPath": "/Users/matuskalanin/Projects/MicroLoanAPI/DataService/DataService.csproj",
+        "packagesPath": "/Users/matuskalanin/.nuget/packages/",
+        "outputPath": "/Users/matuskalanin/Projects/MicroLoanAPI/DataService/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/matuskalanin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.308/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
