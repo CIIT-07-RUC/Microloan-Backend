@@ -46,6 +46,30 @@ namespace MicroLoanAPI.Controllers
             return Ok(borrowerProposals);
         }
 
+
+
+        [HttpPost("loan-confirmation")]
+        public IActionResult CreateInvestorLoanConfirmation(LoanConfirmationModel model)
+        {
+
+
+            var borrowerProposal = _dataservice.InvestorLoanConfirmation(model.InvestorId, model.BorrowerProposalId, model.ConfirmationDate);
+
+            if (borrowerProposal == false)
+            {
+                return BadRequest(borrowerProposal);
+            }
+
+            return Ok(borrowerProposal);
+        }
+
+        [HttpGet("loan-confirmation")]
+        public IActionResult GetInvestorLoanConfirmationById([FromQuery] decimal id)
+        {
+            var borrowerProposals = _dataservice.GetLoanConfirmationById(id);
+            return Ok(borrowerProposals);
+        }
+
     }
 }
 

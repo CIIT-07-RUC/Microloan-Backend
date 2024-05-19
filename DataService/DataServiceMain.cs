@@ -8,11 +8,11 @@ using static Humanizer.On;
 
 namespace DataService
 {
-	public class DataServiceMain : IDataService
-	{
+    public class DataServiceMain : IDataService
+    {
 
         public DataServiceMain()
-		{
+        {
         }
         Random rand = new Random();
 
@@ -27,6 +27,7 @@ namespace DataService
             return user;
         }
 
+
         public UserAccount GetUserByMail(string email)
         {
             microloan_dbContext db = new();
@@ -34,6 +35,15 @@ namespace DataService
             .Where(x => x.EmailAdress == email)
             .FirstOrDefault();
             return user;
+        }
+
+        public BorrowerProposal GetBorrowerProposalById(decimal id)
+        {
+            microloan_dbContext db = new();
+            var borrowerProposal = db.BorrowerProposals
+            .Where(x => x.Id == id)
+            .FirstOrDefault();
+            return borrowerProposal;
         }
 
         public bool CreateInvestor(string email)
@@ -72,7 +82,7 @@ namespace DataService
             return true;
         }
 
-        public Tuple<bool, string> RegisterUser(string email, decimal phone, string password, string confirmPassword, bool isInvestor )
+        public Tuple<bool, string> RegisterUser(string email, decimal phone, string password, string confirmPassword, bool isInvestor)
         {
             var findUser = GetUserByMail(email);
             if (findUser != null)
@@ -85,7 +95,7 @@ namespace DataService
             }
 
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-            
+
 
             var user = new UserAccount
             {
@@ -171,6 +181,47 @@ namespace DataService
             microloan_dbContext db = new();
             var borrowerProposals = db.BorrowerProposals.ToList();
             return borrowerProposals;
+        }
+
+        public bool InvestorLoanConfirmation(decimal investorId, decimal borrowerPropsalId, DateOnly confirmationDate)
+        {
+            if (investorId == null || borrowerPropsalId == null || confirmationDate == null)
+            {
+                return false;
+            }
+
+            var findProposalById = GetBorrowerProposalById(borrowerPropsalId);
+            if (findProposalById == null)
+            {
+                return false;
+            }
+
+            var investorLoanConfirmation = new InvestorLoanConfirmation
+            {
+                Id = rand.Next(1, 900000000 + 1),
+                InvestorId = investorId,
+                BorrowerProposalId = borrowerPropsalId,
+                ConfirmationDate = confirmationDate
+            };
+
+
+            microloan_dbContext db = new();
+
+            // Add the user to the database
+            db.InvestorLoanConfirmations.Add(investorLoanConfirmation);
+            db.SaveChanges();
+
+            return true;
+
+        }
+
+        public InvestorLoanConfirmation GetLoanConfirmationById(decimal id)
+        {
+            microloan_dbContext db = new();
+            var investorLoanConfirmation = db.InvestorLoanConfirmations
+            .Where(x => x.Id == id)
+            .FirstOrDefault();
+            return investorLoanConfirmation;
         }
 
 
