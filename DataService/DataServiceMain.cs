@@ -135,6 +135,44 @@ namespace DataService
             return Tuple.Create(true, "Login successful");
         }
 
+        /* LOANS */
+
+
+        public Tuple<bool, string> CreateBorrowerProposal(decimal borrowerId, decimal proposalInterestRate, decimal proposalAmount, decimal proposalMonthDate)
+        {
+
+            if (borrowerId == null || proposalInterestRate == null || proposalAmount == null || proposalMonthDate == null)
+            {
+                return Tuple.Create(false, "missing parameters");
+            }
+
+            var borrowerProposal = new BorrowerProposal
+            {
+                Id = rand.Next(1, 900000000 + 1),
+                ProposalAmount = proposalAmount,
+                ProposalInterestRate = proposalInterestRate,
+                ProposalMonths = proposalMonthDate,
+                BorrowerId = borrowerId
+            };
+
+
+            microloan_dbContext db = new();
+
+            // Add the user to the database
+            db.BorrowerProposals.Add(borrowerProposal);
+            db.SaveChanges();
+
+
+            return Tuple.Create(true, "Borrower proposal succesfully created");
+        }
+
+        public List<BorrowerProposal> GetBorrowerProposals()
+        {
+            microloan_dbContext db = new();
+            var borrowerProposals = db.BorrowerProposals.ToList();
+            return borrowerProposals;
+        }
+
 
 
     }
