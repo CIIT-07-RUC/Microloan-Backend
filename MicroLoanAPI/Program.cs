@@ -1,6 +1,11 @@
 ﻿using DataService;
 using MicroLoanAPI;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.DataProtection;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +19,25 @@ IServiceCollection serviceCollection = builder.Services.AddSingleton<IDataServic
 
 // SignalR
 builder.Services.AddSignalR();
+
+var secret = builder.Configuration.GetSection("Authentication:Secret").Value;
+
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opt =>
+    {
+        opt.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret)),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+
+
+
 
 var app = builder.Build();
 

@@ -1,9 +1,14 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using DataService;
 using Idfy;
 using Idfy.IdentificationV2;
 using MicroLoanAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+
 
 namespace MicroLoanAPI.Controllers
 {
@@ -11,12 +16,13 @@ namespace MicroLoanAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
 	{
+        private readonly IConfiguration _configuration;
         private readonly IDataService _dataservice;
         private readonly IIdentificationV2Service _identificationV2Service;
 
-        public UsersController(IDataService dataService)
+        public UsersController(IDataService dataService, IConfiguration configuration)
 		{
-            
+            _configuration = configuration;
             _dataservice = dataService;
             _identificationV2Service = new IdentificationV2Service("sandbox-stunning-bag-347", "vMsNWEBnGHDlxVmt4XRrF1RYWdcfKNnCnFNxWXJ7GOSn6obs", new List<OAuthScope> { OAuthScope.Identify});
         }
@@ -51,7 +57,32 @@ namespace MicroLoanAPI.Controllers
                 return BadRequest(new { isRegistrationSuccessful = isLoginSuccessful, responseMessage = responseMessage });
             }
 
-            return Ok(new { isRegistrationSuccessful = isLoginSuccessful, responseMessage = responseMessage });
+            var findUserByEmail = _dataservice.GetUserByMail(model.EmailAdress);
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email, findUserByEmail.EmailAdress),
+                new Claim(ClaimTypes.NameIdentifier, findUserByEmail.Id.ToString()),
+            };
+
+            var secret = _configuration.GetSection("Authentication:Secret").Value;
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var token = new JwtSecurityToken(
+               claims: claims,
+               expires: DateTime.Now.AddDays(4),
+               signingCredentials: creds
+            );
+
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+
+
+            return Ok(new {
+                isRegistrationSuccessful = isLoginSuccessful,
+                responseMessage,
+                token = jwt
+            });
         }
 
         [HttpGet]
