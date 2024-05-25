@@ -1,4 +1,6 @@
 ﻿using DataService;
+using MicroLoanAPI;
+using Microsoft.AspNetCore.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 IServiceCollection serviceCollection = builder.Services.AddSingleton<IDataService, DataServiceMain>();
+
+// SignalR
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -25,6 +30,7 @@ app.UseCors(
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();
 
