@@ -5,14 +5,19 @@ namespace MicroLoanAPI
 {
 	public class ChatHub : Hub
     {
-        public async Task SendMessage(string user, string message)
+        public async Task SendPrivateMessage(string groupName, string user, string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            await Clients.Group(groupName).SendAsync("ReceiveMessage", user, message);
         }
 
-        public async Task SendSignal(string user, string signal)
+        public async Task AddToGroup(string groupName)
         {
-            await Clients.User(user).SendAsync("ReceiveSignal", signal);
+            await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
+        }
+
+        public async Task RemoveFromGroup(string groupName)
+        {
+            await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
         }
     }
 }

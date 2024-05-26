@@ -47,14 +47,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseCors(
-    options => options.WithOrigins("*").AllowAnyMethod().AllowAnyHeader()
-);
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true) // allow any origin
+    .AllowCredentials()); // allow credentials
+
+
+app.MapHub<ChatHub>("/chatHub");
 
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<ChatHub>("/chatHub");
+app.UseRouting();
 
 app.Run();
 
