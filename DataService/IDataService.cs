@@ -7,6 +7,7 @@ namespace DataService
 	{
         public UserAccount GetUserById(int id);
         public UserAccount GetUserByMail(string email);
+        public IEnumerable<dynamic> GetAllUsers();
         public BorrowerProposal GetBorrowerProposalById(decimal id);
 
         public Tuple<bool, string> RegisterUser(string email, decimal phone, string password, string confirmPassword, bool isInvestor);

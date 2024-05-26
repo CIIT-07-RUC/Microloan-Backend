@@ -44,6 +44,13 @@ namespace MicroLoanAPI.Controllers
             return Ok(new { isRegistrationSuccessful = isRegistrationSuccessful, responseMessage = responseMessage });
         }
 
+        [HttpGet("all-users")]
+        public IActionResult GetBorrowerProposals()
+        {
+            var allUsers = _dataservice.GetAllUsers();
+            return Ok(allUsers);
+        }
+
         [HttpPost("login")]
         public IActionResult Login(LoginUserModel model)
         {

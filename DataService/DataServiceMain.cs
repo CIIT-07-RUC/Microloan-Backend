@@ -37,6 +37,24 @@ namespace DataService
             return user;
         }
 
+        public IEnumerable<dynamic> GetAllUsers()
+        {
+            microloan_dbContext db = new();
+            var users = db.UserAccounts
+                .Select( user => new
+                {
+                    user.EmailAdress,
+                    user.DateOfBirth,
+                    user.FirstName,
+                    user.LastName,
+                    user.Id,
+                    user.IsInvestor
+                })
+                .ToList();
+            return users;
+        }
+
+
         public BorrowerProposal GetBorrowerProposalById(decimal id)
         {
             microloan_dbContext db = new();
