@@ -37,6 +37,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 
+// Redis 
+var redisConnectionString = "localhost:6379"; 
+builder.Services.AddSingleton(new RedisCacheService(redisConnectionString));
 
 
 var app = builder.Build();
