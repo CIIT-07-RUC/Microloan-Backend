@@ -18,7 +18,7 @@ namespace DataService.Models
         public string? Password { get; set; }
         public decimal? PhoneNumber { get; set; }
         public DateOnly? DateOfBirth { get; set; }
-        public bool? IsInvestor { get; set; }
+        public bool IsInvestor { get; set; }
 
         public virtual ICollection<Investor> Investors { get; set; }
     }

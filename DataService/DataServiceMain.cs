@@ -27,6 +27,24 @@ namespace DataService
             return user;
         }
 
+        public Borrower GetBorrowerByUserId(decimal userId)
+        {
+            microloan_dbContext db = new();
+            var borrower = db.Borrowers
+            .Where(x => x.UserAccountId == userId)
+            .FirstOrDefault();
+            return borrower;
+        }
+
+        public Investor GetInvestorByUserId(decimal userId)
+        {
+            microloan_dbContext db = new();
+            var investor = db.Investors
+            .Where(x => x.UserAccountId == userId)
+            .FirstOrDefault();
+            return investor;
+        }
+
 
         public UserAccount GetUserByMail(string email)
         {
@@ -160,6 +178,7 @@ namespace DataService
                 return Tuple.Create(false, "Incorrect password");
             }
 
+          
             return Tuple.Create(true, "Login successful");
         }
 

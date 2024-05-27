@@ -7,6 +7,9 @@ namespace DataService
 	{
         public UserAccount GetUserById(int id);
         public UserAccount GetUserByMail(string email);
+        public Borrower GetBorrowerByUserId(decimal userId);
+        public Investor GetInvestorByUserId(decimal userIdd);
+
         public IEnumerable<dynamic> GetAllUsers();
         public BorrowerProposal GetBorrowerProposalById(decimal id);
 

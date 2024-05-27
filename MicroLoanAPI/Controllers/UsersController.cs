@@ -65,10 +65,21 @@ namespace MicroLoanAPI.Controllers
             }
 
             var findUserByEmail = _dataservice.GetUserByMail(model.EmailAdress);
+            dynamic specifingRoleId;
+            if (findUserByEmail.IsInvestor)
+            {
+                specifingRoleId = _dataservice.GetInvestorByUserId(findUserByEmail.Id).Id;
+            }
+            else
+            {
+                specifingRoleId = _dataservice.GetBorrowerByUserId(findUserByEmail.Id).Id;
+            }
 
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, findUserByEmail.EmailAdress),
+                new Claim("IsInvestor", findUserByEmail.IsInvestor.ToString()),
+                new Claim("RoleId", specifingRoleId.ToString()),
                 new Claim(ClaimTypes.NameIdentifier, findUserByEmail.Id.ToString()),
             };
 
