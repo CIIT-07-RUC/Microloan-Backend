@@ -14,16 +14,24 @@ namespace MicroLoanAPI
         }
 
 
-
-
-        public async Task SendPrivateMessage(string groupName, string user, string message)
+        private string GenerateGroupName(string userId1, string userId2)
         {
+            var userIds = new List<string> { userId1, userId2 };
+            userIds.Sort();
+            return string.Join("-", userIds);
+        }
+
+
+        public async Task SendPrivateMessage(string userId1, string userId2, string user, string message)
+        {
+            string groupName = GenerateGroupName(userId1, userId2);
             await _redisCacheService.SaveMessageAsync(groupName, user, message);
             await Clients.Group(groupName).SendAsync("ReceiveMessage", user, message);
         }
 
-        public async Task AddToGroup(string groupName)
+        public async Task AddToGroup(string userId1, string userId2 )
         {
+            string groupName = GenerateGroupName(userId1, userId2);
             await Groups.AddToGroupAsync(Context.ConnectionId, groupName);
         }
 
@@ -32,8 +40,9 @@ namespace MicroLoanAPI
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, groupName);
         }
 
-        public async Task LoadPreviousMessages(string groupName)
+        public async Task LoadPreviousMessages(string userId1, string userId2)
         {
+            string groupName = GenerateGroupName(userId1, userId2);
             var messages = await _redisCacheService.GetMessagesAsync(groupName);
             foreach (var message in messages)
             {

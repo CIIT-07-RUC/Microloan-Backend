@@ -24,6 +24,11 @@ namespace MicroLoanAPI
         {
             return (await _db.ListRangeAsync(conversationId)).ToStringArray();
         }
+
+        public async Task<string[]> GetMessagesByUser(string userId)
+        {
+            return (await _db.ListRangeAsync(userId)).ToStringArray();
+        }
     }
 }
 
