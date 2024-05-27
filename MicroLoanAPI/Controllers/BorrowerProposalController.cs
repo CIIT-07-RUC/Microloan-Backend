@@ -4,10 +4,13 @@ using Idfy;
 using Idfy.IdentificationV2;
 using MicroLoanAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace MicroLoanAPI.Controllers
 {
-    [Route("api/loan")]
+    [Route("api/borrower-proposals")]
     [ApiController]
     public class BorrowerProposal : ControllerBase
 	{
@@ -19,12 +22,12 @@ namespace MicroLoanAPI.Controllers
             _dataservice = dataService;
         }
 
-        [HttpPost("borrower-proposal")]
+        [Authorize]
+        [HttpPost]
         public IActionResult CreateBorrowerProposal(BorrowerProposalModel model)
         {
-
-    
-            var borrowerProposal = _dataservice.CreateBorrowerProposal(model.BorrowerId, model.ProposalInterestRate, model.ProposalAmount, model.ProposalMonths);
+            var borrowerIdClaim = Decimal.Parse(User.FindFirst("RoleId").Value);
+            var borrowerProposal = _dataservice.CreateBorrowerProposal(borrowerIdClaim, model.ProposalInterestRate, model.ProposalAmount, model.ProposalMonths);
 
             bool isActionSuccess = borrowerProposal.Item1;
             string responseMessage = borrowerProposal.Item2;
@@ -39,7 +42,7 @@ namespace MicroLoanAPI.Controllers
 
        
 
-        [HttpGet("borrower-proposals")]
+        [HttpGet]
         public IActionResult GetBorrowerProposals()
         {
             var borrowerProposals = _dataservice.GetBorrowerProposals();
@@ -47,13 +50,19 @@ namespace MicroLoanAPI.Controllers
         }
 
 
+        [HttpGet("proposal-by-id")]
+        public IActionResult GetBorrowerProposalById([FromQuery] decimal id)
+        {
+            var borrowerProposals = _dataservice.GetBorrowerProposalById(id);
+            return Ok(borrowerProposals);
+        }
 
+        [Authorize]
         [HttpPost("loan-confirmation")]
         public IActionResult CreateInvestorLoanConfirmation(LoanConfirmationModel model)
         {
-
-
-            var borrowerProposal = _dataservice.InvestorLoanConfirmation(model.InvestorId, model.BorrowerProposalId, model.ConfirmationDate);
+            var investorIdClaim = Decimal.Parse(User.FindFirst("RoleId").Value);
+            var borrowerProposal = _dataservice.InvestorLoanConfirmation(investorIdClaim, model.BorrowerProposalId, model.ConfirmationDate);
 
             if (borrowerProposal == false)
             {
