@@ -1,5 +1,7 @@
 ﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using StackExchange.Redis;
 
 namespace MicroLoanAPI
 {
@@ -22,10 +24,10 @@ namespace MicroLoanAPI
         }
 
 
-        public async Task SendPrivateMessage(string userId1, string userId2, string user, string message)
+        public async Task SendPrivateMessage(string userId1, string userId2, string user, string message, string dateTime)
         {
             string groupName = GenerateGroupName(userId1, userId2);
-            await _redisCacheService.SaveMessageAsync(groupName, user, message);
+            await _redisCacheService.SaveMessageAsync(groupName, user, message, dateTime);
             await Clients.Group(groupName).SendAsync("ReceiveMessage", user, message);
         }
 
@@ -49,6 +51,14 @@ namespace MicroLoanAPI
                 await Clients.Caller.SendAsync("ReceiveMessage", "", message);
             }
         }
+
+
+
+        public async Task<string[]> GetConversationsByUser(string userId)
+        {
+            return await _redisCacheService.GetConversationsByUserAsync(userId);
+        }
+
 
     }
 }
