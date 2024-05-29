@@ -110,6 +110,18 @@ namespace MicroLoanAPI.Controllers
             return Ok(user);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetUserById(int id)
+        {
+            var user = _dataservice.GetUserById(id);
+            if(user == null )
+            {
+                return BadRequest();
+
+            }
+            return Ok(user);
+        }
+
 
         [HttpPost("create-mit-id-session")]
         public async Task<IActionResult> CreateMitIdSession()
