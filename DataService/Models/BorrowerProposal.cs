@@ -16,6 +16,8 @@ namespace DataService.Models
         public decimal? ProposalAmount { get; set; }
         public decimal? ProposalMonths { get; set; }
         public string? Organization { get; set; }
+        public string? Description { get; set; }
+        public string? Title { get; set; }
 
         public virtual Borrower? Borrower { get; set; }
         public virtual ICollection<InvestorLoanConfirmation> InvestorLoanConfirmations { get; set; }

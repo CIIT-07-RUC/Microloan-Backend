@@ -123,6 +123,14 @@ namespace DataService.Models
                     .HasMaxLength(255)
                     .HasColumnName("organization");
 
+                entity.Property(e => e.Description)
+                 .HasMaxLength(255)
+                 .HasColumnName("description");
+
+                entity.Property(e => e.Title)
+                .HasMaxLength(255)
+                .HasColumnName("title");
+
                 entity.Property(e => e.ProposalAmount)
                     .HasPrecision(10, 2)
                     .HasColumnName("proposal_amount");
