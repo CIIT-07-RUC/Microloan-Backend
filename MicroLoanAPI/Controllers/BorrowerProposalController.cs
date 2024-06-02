@@ -66,10 +66,10 @@ namespace MicroLoanAPI.Controllers
 
             if (borrowerProposal == false)
             {
-                return BadRequest(borrowerProposal);
+                return BadRequest(new { borrowerProposal, message = "Borower proposal was not found"});
             }
 
-            return Ok(borrowerProposal);
+            return Ok(new { borrowerProposal , message = "Loan-confirmation is successful"});
         }
 
         [HttpGet("loan-confirmation")]

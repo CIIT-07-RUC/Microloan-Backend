@@ -36,6 +36,18 @@ namespace DataService
             return borrower;
         }
 
+        public Borrower GetUserByBorrowerId(decimal borrowerId)
+        {
+            microloan_dbContext db = new();
+            var investor = db.Borrowers
+            .Include(b => b.UserAccount)
+            .Include(b => b.InverseUserAccount)
+            .FirstOrDefault(x => x.Id == borrowerId);
+
+            return investor;
+        }
+
+
         public Investor GetInvestorByUserId(decimal userId)
         {
             microloan_dbContext db = new();

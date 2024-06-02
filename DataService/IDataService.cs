@@ -10,6 +10,11 @@ namespace DataService
         public Borrower GetBorrowerByUserId(decimal userId);
         public Investor GetInvestorByUserId(decimal userIdd);
 
+
+        public Borrower GetUserByBorrowerId(decimal borrowerId);
+
+
+
         public IEnumerable<dynamic> GetAllUsers();
         public BorrowerProposal GetBorrowerProposalById(decimal id);
 
