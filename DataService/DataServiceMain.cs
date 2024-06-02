@@ -197,10 +197,10 @@ namespace DataService
         /* LOANS */
 
 
-        public Tuple<bool, string> CreateBorrowerProposal(decimal borrowerId, decimal proposalInterestRate, decimal proposalAmount, decimal proposalMonthDate)
+        public Tuple<bool, string> CreateBorrowerProposal(decimal borrowerId, decimal proposalInterestRate, decimal proposalAmount, decimal proposalMonthDate, string title, string description)
         {
 
-            if (borrowerId == null || proposalInterestRate == null || proposalAmount == null || proposalMonthDate == null)
+            if (borrowerId == null || proposalInterestRate == null || proposalAmount == null || proposalMonthDate == null || title == null)
             {
                 return Tuple.Create(false, "missing parameters");
             }
@@ -211,7 +211,9 @@ namespace DataService
                 ProposalAmount = proposalAmount,
                 ProposalInterestRate = proposalInterestRate,
                 ProposalMonths = proposalMonthDate,
-                BorrowerId = borrowerId
+                BorrowerId = borrowerId,
+                Title = title,
+                Description = description
             };
 
 

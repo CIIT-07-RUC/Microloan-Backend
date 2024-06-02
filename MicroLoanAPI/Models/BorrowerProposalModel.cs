@@ -8,6 +8,9 @@ namespace MicroLoanAPI.Models
         public decimal ProposalAmount { get; set; }
         public decimal ProposalMonths { get; set; }
         public string Organization { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+
     }
 }
 

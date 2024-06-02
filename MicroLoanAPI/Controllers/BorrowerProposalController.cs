@@ -27,7 +27,7 @@ namespace MicroLoanAPI.Controllers
         public IActionResult CreateBorrowerProposal(BorrowerProposalModel model)
         {
             var borrowerIdClaim = Decimal.Parse(User.FindFirst("RoleId").Value);
-            var borrowerProposal = _dataservice.CreateBorrowerProposal(borrowerIdClaim, model.ProposalInterestRate, model.ProposalAmount, model.ProposalMonths);
+            var borrowerProposal = _dataservice.CreateBorrowerProposal(borrowerIdClaim, model.ProposalInterestRate, model.ProposalAmount, model.ProposalMonths, model.Title, model.Description);
 
             bool isActionSuccess = borrowerProposal.Item1;
             string responseMessage = borrowerProposal.Item2;

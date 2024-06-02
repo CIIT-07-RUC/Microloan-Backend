@@ -20,7 +20,7 @@ namespace DataService
 
         public Tuple<bool, string> RegisterUser(string email, decimal phone, string password, string confirmPassword, bool isInvestor);
         public Tuple<bool, string> LoginUser(string email, string password);
-        public Tuple<bool, string> CreateBorrowerProposal(decimal borrowerId, decimal proposalInterestRate, decimal proposalAmount, decimal proposalMonthDate);
+        public Tuple<bool, string> CreateBorrowerProposal(decimal borrowerId, decimal proposalInterestRate, decimal proposalAmount, decimal proposalMonthDate, string title, string description);
         public List<BorrowerProposal> GetBorrowerProposals();
 
 
