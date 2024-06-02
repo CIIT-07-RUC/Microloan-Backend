@@ -274,6 +274,16 @@ namespace DataService
         }
 
 
+        public InvestorLoanConfirmation GetLoanConfirmationByProposalId(decimal id)
+        {
+            microloan_dbContext db = new();
+            var investorLoanConfirmation = db.InvestorLoanConfirmations
+            .Where(x => x.BorrowerProposalId == id)
+            .FirstOrDefault();
+            return investorLoanConfirmation;
+        }
+
+
 
     }
 }

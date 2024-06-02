@@ -57,6 +57,19 @@ namespace MicroLoanAPI.Controllers
             return Ok(borrowerProposals);
         }
 
+
+        [HttpGet("borrower-proposal-status")]
+        public IActionResult BorrowerProposalStatus([FromQuery] decimal id)
+        {
+            var loanConfirmation = _dataservice.GetLoanConfirmationByProposalId(id);
+            if (loanConfirmation == null)
+            {
+                return Ok(false);
+            }
+            return Ok(true);
+        }
+
+
         [Authorize]
         [HttpPost("loan-confirmation")]
         public IActionResult CreateInvestorLoanConfirmation(LoanConfirmationModel model)

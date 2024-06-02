@@ -25,6 +25,8 @@ namespace DataService
 
 
         public InvestorLoanConfirmation GetLoanConfirmationById(decimal id);
+        public InvestorLoanConfirmation GetLoanConfirmationByProposalId(decimal id);
+        
         public bool InvestorLoanConfirmation(decimal investorId, decimal borrowerPropsalId, DateOnly confirmationDate);
 
     }
