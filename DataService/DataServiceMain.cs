@@ -8,6 +8,9 @@ using static Humanizer.On;
 
 namespace DataService
 {
+
+
+
     public class DataServiceMain : IDataService
     {
 
@@ -234,17 +237,17 @@ namespace DataService
             return borrowerProposals;
         }
 
-        public bool InvestorLoanConfirmation(decimal investorId, decimal borrowerPropsalId, DateOnly confirmationDate)
+        public InvestorLoanConfirmationResult InvestorLoanConfirmation(decimal investorId, decimal borrowerPropsalId, DateOnly confirmationDate)
         {
             if (investorId == null || borrowerPropsalId == null || confirmationDate == null)
             {
-                return false;
+                return null;
             }
 
             var findProposalById = GetBorrowerProposalById(borrowerPropsalId);
             if (findProposalById == null)
             {
-                return false;
+                return null;
             }
 
             var investorLoanConfirmation = new InvestorLoanConfirmation
@@ -262,9 +265,42 @@ namespace DataService
             db.InvestorLoanConfirmations.Add(investorLoanConfirmation);
             db.SaveChanges();
 
-            return true;
+            var result = new InvestorLoanConfirmationResult
+            {
+                BorrowerProposal = findProposalById,
+                InvestorLoanConfirmation = investorLoanConfirmation
+            };
+
+            return result;
 
         }
+
+        public bool CreateLoan(decimal investorLoanConfirmationId, decimal loanAmount, decimal LoanTenureInMonths, decimal interestRate, char riskRating)
+        {
+            if (investorLoanConfirmationId == null || loanAmount == null || LoanTenureInMonths == null || interestRate == null || riskRating == null)
+            {
+                return false;
+            }
+
+            var loanTicket = new LoanTicket
+            {
+                Id = rand.Next(1, 900000000 + 1),
+                InvestorLoanConfirmationId = investorLoanConfirmationId,
+                LoanAmount = loanAmount
+            };
+
+            microloan_dbContext db = new();
+
+            // Add the user to the database
+            db.LoanTickets.Add(loanTicket);
+            db.SaveChanges();
+
+            return true;
+        }
+
+
+
+
 
         public InvestorLoanConfirmation GetLoanConfirmationById(decimal id)
         {

@@ -89,7 +89,7 @@ namespace MicroLoanAPI.Controllers
 
             var token = new JwtSecurityToken(
                claims: claims,
-               expires: DateTime.Now.AddDays(4),
+               expires: DateTime.Now.AddDays(1),
                signingCredentials: creds
             );
 

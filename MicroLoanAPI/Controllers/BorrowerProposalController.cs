@@ -75,14 +75,18 @@ namespace MicroLoanAPI.Controllers
         public IActionResult CreateInvestorLoanConfirmation(LoanConfirmationModel model)
         {
             var investorIdClaim = Decimal.Parse(User.FindFirst("RoleId").Value);
-            var borrowerProposal = _dataservice.InvestorLoanConfirmation(investorIdClaim, model.BorrowerProposalId, model.ConfirmationDate);
+            var result = _dataservice.InvestorLoanConfirmation(investorIdClaim, model.BorrowerProposalId, model.ConfirmationDate);
 
-            if (borrowerProposal == false)
+            if (result == null)
             {
-                return BadRequest(new { borrowerProposal, message = "Borower proposal was not found"});
+                return BadRequest(new { result, message = "Borower proposal was not found"});
             }
 
-            return Ok(new { borrowerProposal , message = "Loan-confirmation is successful"});
+
+            var loan = _dataservice.CreateLoan(result.InvestorLoanConfirmation.Id, result.BorrowerProposal.ProposalAmount, 0, result.BorrowerProposal.ProposalInterestRate, 'F');
+
+
+            return Ok(new { loan, message = "Loan-confirmation is successful"});
         }
 
         [HttpGet("loan-confirmation")]

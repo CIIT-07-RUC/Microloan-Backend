@@ -13,7 +13,7 @@ namespace DataService
 
         public Borrower GetUserByBorrowerId(decimal borrowerId);
 
-
+        public bool CreateLoan(decimal investorLoanConfirmationId, decimal loanAmount, decimal LoanTenureInMonths, decimal interestRate, char riskRating);
 
         public IEnumerable<dynamic> GetAllUsers();
         public BorrowerProposal GetBorrowerProposalById(decimal id);
@@ -27,7 +27,7 @@ namespace DataService
         public InvestorLoanConfirmation GetLoanConfirmationById(decimal id);
         public InvestorLoanConfirmation GetLoanConfirmationByProposalId(decimal id);
         
-        public bool InvestorLoanConfirmation(decimal investorId, decimal borrowerPropsalId, DateOnly confirmationDate);
+        public InvestorLoanConfirmationResult InvestorLoanConfirmation(decimal investorId, decimal borrowerPropsalId, DateOnly confirmationDate);
 
     }
 }

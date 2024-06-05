@@ -12,9 +12,9 @@ namespace DataService.Models
 
         public decimal Id { get; set; }
         public decimal? BorrowerId { get; set; }
-        public decimal? ProposalInterestRate { get; set; }
-        public decimal? ProposalAmount { get; set; }
-        public decimal? ProposalMonths { get; set; }
+        public decimal ProposalInterestRate { get; set; }
+        public decimal ProposalAmount { get; set; }
+        public decimal ProposalMonths { get; set; }
         public string? Organization { get; set; }
         public string? Description { get; set; }
         public string? Title { get; set; }
